@@ -34,9 +34,9 @@ fi
 
 
 if [ "1" == "$DEBUG" ] ; then
-    # run sshd in debug mode and capture output to logcat
+    # run sshd in debug mode and capture output to logcat (not started as daemon)
     /system/bin/logwrapper /system/bin/sshd -f /system/etc/ssh/sshd_config -D -d
 else
-    # don't daemonize - otherwise we can't stop the sshd service
-    /system/bin/sshd -f /system/etc/ssh/sshd_config -D
+    # start sshd as daemon - use 'killall sshd' to stop service
+    /system/bin/sshd -f /system/etc/ssh/sshd_config
 fi
