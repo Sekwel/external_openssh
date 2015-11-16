@@ -35,7 +35,7 @@
 # Logging
 # obsoletes QuietMode and FascistLogging
 #SyslogFacility AUTH
-#LogLevel INFO
+#LogLevel DEBUG
 
 # Authentication:
 
@@ -46,11 +46,11 @@ StrictModes no
 #MaxSessions 10
 
 #RSAAuthentication yes
-#PubkeyAuthentication yes
+PubkeyAuthentication yes
 
 # The default is to check both .ssh/authorized_keys and .ssh/authorized_keys2
 # but this is overridden so installations will only check .ssh/authorized_keys
-AuthorizedKeysFile	.ssh/authorized_keys
+AuthorizedKeysFile	/data/.ssh/authorized_keys
 
 #AuthorizedPrincipalsFile none
 
@@ -111,7 +111,7 @@ UsePrivilegeSeparation sandbox		# Default for new installations.
 #ClientAliveInterval 0
 #ClientAliveCountMax 3
 #UseDNS yes
-#PidFile /var/run/sshd.pid
+PidFile /data/ssh/sshd.pid
 #MaxStartups 10:30:100
 #PermitTunnel no
 #ChrootDirectory none

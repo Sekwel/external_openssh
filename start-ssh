@@ -8,9 +8,24 @@ DSA_KEY=/data/ssh/ssh_host_dsa_key
 DSA_PUB_KEY=/data/ssh/ssh_host_dsa_key.pub
 RSA_KEY=/data/ssh/ssh_host_rsa_key
 RSA_PUB_KEY=/data/ssh/ssh_host_rsa_key.pub
+ECDSA_KEY=/data/ssh/ssh_host_ecdsa_key
+ECDSA_PUB_KEY=/data/ssh/ssh_host_ecdsa_key.pub
 AUTHORIZED_KEYS=/data/.ssh/authorized_keys
 OLD_AUTHORIZED_KEYS=/data/ssh/authorized_keys
 DEFAULT_AUTHORIZED_KEYS=/system/etc/security/authorized_keys.default
+
+if [ ! -d /data/ssh ]; then
+    mkdir /data/ssh
+fi
+
+if [ ! -d /data/.ssh ]; then
+    mkdir /data/.ssh
+fi
+
+if [ ! -d /data/ssh/empty ]; then
+    mkdir /data/ssh/empty
+    chmod 700 /data/ssh/empty
+fi
 
 if [ ! -f $DSA_KEY ]; then
     ssh-keygen -t dsa -f $DSA_KEY -N ""
@@ -24,6 +39,12 @@ if [ ! -f $RSA_KEY ]; then
     chmod 644 $RSA_PUB_KEY
 fi
 
+if [ ! -f $ECDSA_KEY ]; then
+    /system/bin/ssh-keygen -t ecdsa -f $ECDSA_KEY -N ""
+    chmod 600 /$ECDSA_KEY
+    chmod 644 $ECDSA_PUB_KEY
+fi
+
 if [[ -f $OLD_AUTHORIZED_KEYS && ! -f $AUTHORIZED_KEYS ]]; then
     cat $OLD_AUTHORIZED_KEYS > $AUTHORIZED_KEYS
 fi
@@ -31,7 +52,6 @@ fi
 if [[ ! -f $AUTHORIZED_KEYS && -f $DEFAULT_AUTHORIZED_KEYS ]]; then
     cat $DEFAULT_AUTHORIZED_KEYS > $AUTHORIZED_KEYS
 fi
-
 
 if [ "1" == "$DEBUG" ] ; then
     # run sshd in debug mode and capture output to logcat (not started as daemon)
