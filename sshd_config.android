@@ -23,6 +23,7 @@
 # HostKeys for protocol version 2
 HostKey /data/ssh/ssh_host_rsa_key
 HostKey /data/ssh/ssh_host_dsa_key
+HostKey /data/ssh/ssh_host_ecdsa_key
 
 # Lifetime and size of ephemeral version 1 server key
 #KeyRegenerationInterval 1h
@@ -37,12 +38,12 @@ HostKey /data/ssh/ssh_host_dsa_key
 
 #LoginGraceTime 2m
 #PermitRootLogin yes
-#StrictModes yes
+StrictModes no
 #MaxAuthTries 6
 #MaxSessions 10
 
 #RSAAuthentication yes
-#PubkeyAuthentication yes
+PubkeyAuthentication yes
 
 # The default is to check both .ssh/authorized_keys and .ssh/authorized_keys2
 # but this is overridden so installations will only check .ssh/authorized_keys
@@ -104,7 +105,7 @@ UsePrivilegeSeparation sandbox         # Default for new installations.
 #ClientAliveInterval 0
 #ClientAliveCountMax 3
 #UseDNS yes
-#PidFile /var/run/sshd.pid
+PidFile /data/ssh/sshd.pid
 #MaxStartups 10
 #PermitTunnel no
 #ChrootDirectory none
