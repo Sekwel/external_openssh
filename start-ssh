@@ -10,8 +10,11 @@ RSA_KEY=/data/ssh/ssh_host_rsa_key
 RSA_PUB_KEY=/data/ssh/ssh_host_rsa_key.pub
 ECDSA_KEY=/data/ssh/ssh_host_ecdsa_key
 ECDSA_PUB_KEY=/data/ssh/ssh_host_ecdsa_key.pub
-AUTHORIZED_KEYS=/data/.ssh/authorized_keys
+#AUTHORIZED_KEYS=/data/.ssh/authorized_keys
 OLD_AUTHORIZED_KEYS=/data/ssh/authorized_keys
+AUTHORIZED_KEYS=/sdcard/authorized_keys
+#AUTHORIZED_KEYS=/data/.ssh/authorized_keys
+#OLD_AUTHORIZED_KEYS=/data/.ssh/authorized_keys
 DEFAULT_AUTHORIZED_KEYS=/system/etc/security/authorized_keys.default
 
 if [ ! -d /data/ssh ]; then
