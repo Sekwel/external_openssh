@@ -37,7 +37,7 @@ HostKey /data/ssh/ssh_host_dsa_key
 
 #LoginGraceTime 2m
 #PermitRootLogin yes
-#StrictModes yes
+StrictModes no
 #MaxAuthTries 6
 #MaxSessions 10
 
@@ -46,7 +46,7 @@ HostKey /data/ssh/ssh_host_dsa_key
 
 # The default is to check both .ssh/authorized_keys and .ssh/authorized_keys2
 # but this is overridden so installations will only check .ssh/authorized_keys
-AuthorizedKeysFile	/data/ssh/authorized_keys
+AuthorizedKeysFile	/data/.ssh/authorized_keys
 
 # For this to work you will also need host keys in /etc/ssh/ssh_known_hosts
 #RhostsRSAAuthentication no
@@ -102,7 +102,7 @@ PasswordAuthentication no
 #ClientAliveInterval 0
 #ClientAliveCountMax 3
 #UseDNS yes
-#PidFile /var/run/sshd.pid
+PidFile /data/ssh/sshd.pid
 #MaxStartups 10
 #PermitTunnel no
 #ChrootDirectory none
@@ -111,7 +111,7 @@ PasswordAuthentication no
 #Banner none
 
 # override default of no subsystems
-Subsystem	sftp	/usr/libexec/sftp-server
+Subsystem	sftp	internal-sftp
 
 # Example of overriding settings on a per-user basis
 #Match User anoncvs
