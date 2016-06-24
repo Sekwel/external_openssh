@@ -22,7 +22,7 @@ Protocol 2
 #HostKey /etc/ssh/ssh_host_key
 # HostKeys for protocol version 2
 HostKey /data/ssh/ssh_host_rsa_key
-HostKey /data/ssh/ssh_host_dsa_key
+#HostKey /data/ssh/ssh_host_dsa_key
 
 # Lifetime and size of ephemeral version 1 server key
 #KeyRegenerationInterval 1h
@@ -96,7 +96,7 @@ PasswordAuthentication no
 #PrintLastLog yes
 #TCPKeepAlive yes
 #UseLogin no
-#UsePrivilegeSeparation yes
+UsePrivilegeSeparation no
 #PermitUserEnvironment no
 #Compression delayed
 #ClientAliveInterval 0
